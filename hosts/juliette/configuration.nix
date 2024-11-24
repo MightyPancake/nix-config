@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      # <nixos-hardware/asus/zephyrus/ga401>
       ./hardware-configuration.nix
     ];
 
@@ -49,7 +48,7 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
+    dpi = 150;
     windowManager.awesome = {
       enable = true;
     };
@@ -119,43 +118,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # display manager
-    lightdm
-    # text editor
-    helix
-    # utils
-    wget
-    neofetch
-    bottom
-    bat
-    onedrive
-    
-    # terminal
-    oh-my-fish
-    kitty
-    # dev
     git
-    gcc
-    bison
-    flex
-    lua
-    luarocks
-    luajit
-    love
-    gnumake
-    # media
-    firefox
-    # cava
-    spotify
-    # comms
-    discord
-    # games
-    wine
-    # I/O
-    pulseaudio
-    alsa-lib
-    bluetuith
-    appimage-run
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

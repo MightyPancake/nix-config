@@ -3,8 +3,9 @@
   # Updaing only one input
   # nix flake lock --update-input nixvim 
   inputs = {
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-     home-manager = {
+    home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
      };
@@ -14,7 +15,8 @@
      # };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs:
+
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nixos-hardware, ... }@inputs:
     let
       lib = nixpkgs.lib;
       user = "mightypancake";
@@ -31,15 +33,16 @@
           inherit system;
           specialArgs = { inherit inputs user; };
           modules = [
+            nixos-hardware.nixosModules.asus-zephyrus-ga401
             ./hosts/juliette
-            # ./modules
-      	    # ./modules/awesome
-            # home-manager.nixosModules.home-manager {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users."${user}" = import ./home/home.nix;
-            #   home-manager.extraSpecialArgs = { inherit user inputs; };
-            # }
+            ./modules
+      	    ./modules/awesome
+             home-manager.nixosModules.home-manager {
+               home-manager.useGlobalPkgs = true;
+               home-manager.useUserPackages = true;
+               home-manager.users."${user}" = import ./home/home.nix;
+               home-manager.extraSpecialArgs = { inherit user inputs; };
+             }
           ];
         };
       };
