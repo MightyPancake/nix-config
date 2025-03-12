@@ -10,7 +10,7 @@
   ];
 
   environment.variables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     SHELL = "fish";
     KITTY_CONFIG_DIRECTORY = "/home/mightypancake/nix-config/home/programs/kitty";
   };
@@ -25,6 +25,10 @@
   nixpkgs = {
     config.allowUnfree = true;
   };
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   environment.systemPackages = with pkgs; [
   	# xorg.xbacklight

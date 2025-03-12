@@ -800,7 +800,7 @@ awesome.connect_signal("startup",
     local boot_cmds = {
 			  "picom --config /home/mightypancake/nix-config/modules/awesome/picom-config.conf --backend glx --vsync",
 			  "nm-applet",
-			  "feh --bg-fill /home/mightypancake/OneDrive/images/wallpapers/justice.png",
+			  "feh --bg-fill /home/mightypancake/OneDrive/images/wallpapers/caravan_chill.png",
         "appimage-run ~/Downloads/ahk_x11.AppImage ~/Downloads/nixos.ahk > ~/appimage.log 2>&1 &"
     }
     for _, c in ipairs(boot_cmds) do

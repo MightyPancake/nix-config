@@ -94,6 +94,12 @@
     description = "Filip Krol";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      # tree-sitter sucks ass and cannot run in impure (ie. nix shell)
+      tree-sitter
+      nodejs
+      emscripten
+      wgpu-utils
+      
       awesome # Window manager
     ];
   };

@@ -2,7 +2,7 @@
 {
   programs.rofi = {
     enable = true;
-    terminal = "alacritty";
+    terminal = "kitty";
     theme = ./themes/spotlight-dark-Kypton.rasi;
   };
 }
